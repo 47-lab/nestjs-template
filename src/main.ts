@@ -9,9 +9,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
 
-    .setTitle('Median')
+    .setTitle('Backend Template')
 
-    .setDescription('The Median API description')
+    .setDescription('The Backend Template API description')
 
     .setVersion('0.1')
 
