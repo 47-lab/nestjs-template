@@ -20,6 +20,15 @@ model User {
   role     String  @default("user")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  apiCredentials ApiCredential[]
+}
+
+model ApiCredential {
+  id String @id @default(uuid())
+  clientId String @unique @default(uuid())
+  clientSecret String @default(uuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
 }
 
 model Article {
