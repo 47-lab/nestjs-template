@@ -41,4 +41,9 @@ export class AuthService {
       role,
     });
   }
+
+  async validateAccessToken(access_token: string) {
+    const payload = await this.jwtService.verifyAsync(access_token);
+    return payload;
+  }
 }
