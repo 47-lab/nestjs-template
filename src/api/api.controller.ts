@@ -1,7 +1,7 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { ApiCredential, ApiService } from './api.service';
 import { AuthGuard } from 'src/auth/auth.guard';
-import { ApiBearerAuth, ApiProperty } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiProperty, ApiTags } from '@nestjs/swagger';
 
 class CreateApiCredentialDto {
   @ApiProperty()
@@ -23,6 +23,7 @@ export class ApiController {
   @Post('create')
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
+  @ApiTags('api')
   public async createApiCredential(
     @Body()
     body: CreateApiCredentialDto,
@@ -32,6 +33,7 @@ export class ApiController {
   }
 
   @Post('token')
+  @ApiTags('api')
   public async getToken(
     @Body() body: GetTokenDto,
   ): Promise<{ access_token: string }> {
