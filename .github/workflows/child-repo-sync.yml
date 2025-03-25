@@ -1,0 +1,17 @@
+name: Trigger Sync in Child Repo
+
+on:
+  push:
+    branches:
+      - main  # oder dein Branch im Template
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Child Repo Workflow
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.ACCESS_KEY }}
+          repository: 47-lab/dein-child-repo
+          event-type: sync-from-template
