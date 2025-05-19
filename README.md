@@ -19,6 +19,13 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## This is a simple nestjs template with authentication
+
+- it provides you with an basic 0auth2 workflow
+- it provides you with a simple jwt based authentication possibility
+
+if you want to improve the template feel free to create some pull request!
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.

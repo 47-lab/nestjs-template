@@ -29,13 +29,11 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  @ApiTags('auth')
   signIn(@Body() signInDto: UserDto) {
     return this.authService.signIn(signInDto.email, signInDto.password);
   }
 
   @Post('register')
-  @ApiTags('auth')
   signUp(@Body() signUpDto: UserDto) {
     try {
       const validatedUser = schema.parse(signUpDto);
