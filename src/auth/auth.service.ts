@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { User, UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
+import { compare, hash } from 'bcrypt';
 
 
 @Injectable()
@@ -20,7 +21,7 @@ export class AuthService {
       console.log('user not found');
       throw new UnauthorizedException();
     }
-    const isPasswordValid = await Bun.password.verify(pass, user.password);
+    const isPasswordValid = await compare(pass, user.password);
     if (!isPasswordValid) {
       console.log('password not valid');
       throw new UnauthorizedException();
@@ -35,7 +36,7 @@ export class AuthService {
     if (user) {
       throw new ConflictException('User already exists');
     }
-    const hashedPassword = await Bun.password.hash(password);
+    const hashedPassword = await hash(password, 10);
 
     return this.usersService.create({
       email,
